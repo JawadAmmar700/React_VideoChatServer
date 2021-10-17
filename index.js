@@ -7,6 +7,10 @@ const { addUser, removeUser, getAllUsersInTheRoom } = require("./functions")
 
 app.use(cors({ origin: process.env.CLIENT_APP }))
 
+app.get("/", (req, res) => {
+  res.send("Hello World")
+})
+
 const server = app.listen(process.env.PORT || 4000)
 
 const io = socket(server, {
