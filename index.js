@@ -7,7 +7,7 @@ const { addUser, removeUser, getAllUsersInTheRoom } = require("./functions")
 
 app.use(cors({ origin: process.env.CLIENT_APP }))
 
-const server = app.listen(4000)
+const server = app.listen(process.env.PORT || 4000)
 
 const io = socket(server, {
   cors: {
@@ -17,7 +17,6 @@ const io = socket(server, {
 })
 
 io.on("connection", socket => {
-  console.log("New user connected")
   let userToRemove = null
 
   socket.on("getAllUsersForTheNewPage", roomId => {
