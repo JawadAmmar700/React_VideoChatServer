@@ -1,8 +1,8 @@
+require("dotenv").config()
 const express = require("express")
 const app = express()
 const cors = require("cors")
 const socket = require("socket.io")
-require("dotenv").config()
 const { addUser, removeUser, getAllUsersInTheRoom } = require("./functions")
 
 app.use(cors({ origin: process.env.CLIENT_APP }))
