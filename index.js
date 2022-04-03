@@ -6,6 +6,10 @@ const { PeerServer } = require("peer")
 const socket = require("socket.io")
 const { addUser, removeUser, getAllUsersInTheRoom } = require("./functions")
 
+app.get("/", (req, res) => {
+  res.send("Hello World")
+})
+
 app.use(cors({ origin: process.env.CLIENT_APP }))
 
 const peerServer = PeerServer({ port: 2000, path: "/", key: "peerjs" })
