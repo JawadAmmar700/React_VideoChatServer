@@ -15,7 +15,7 @@ app.use(cors({ origin: process.env.CLIENT_APP }))
 
 // const peerServer = PeerServer({ port: 2000, path: "/", key: "peerjs" })
 
-const server = app.listen(4000)
+const server = app.listen(process.env.PORT || 4000)
 const peerServer = ExpressPeerServer(server, {
   path: "/",
 })
