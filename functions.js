@@ -12,7 +12,7 @@ const removeUser = ({ roomId, userId }) => {
     user => user.userId === userId && user.roomId === roomId
   )
   users.splice(index, 1)
-  console.log(users)
+  console.log("remove", users)
   return userId
 }
 
