@@ -2,8 +2,6 @@ require("dotenv").config()
 const express = require("express")
 const app = express()
 const cors = require("cors")
-// const { PeerServer } = require("peer")
-const { ExpressPeerServer } = require("peer")
 const socket = require("socket.io")
 const { addUser, removeUser, getAllUsersInTheRoom } = require("./functions")
 
@@ -13,14 +11,11 @@ app.get("/", (req, res) => {
 
 app.use(cors({ origin: process.env.CLIENT_APP }))
 
+// !important use code below for loacl dev if the peer server is down or not working ⬇️
+// const { PeerServer } = require("peer")
 // const peerServer = PeerServer({ port: 2000, path: "/", key: "peerjs" })
 
 const server = app.listen(process.env.PORT || 4000)
-const peerServer = ExpressPeerServer(server, {
-  path: "/",
-})
-
-app.use("/peer", peerServer)
 
 const io = socket(server, {
   cors: {
